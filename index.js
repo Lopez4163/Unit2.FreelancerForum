@@ -1,37 +1,53 @@
-const freelancers = [
-  { name: "Dr. Slice", price: 25, occupation: "gardener" },
-  { name: "Dr. Pressure", price: 51, occupation: "programmer" },
-  { name: "Prof. Possibility", price: 43, occupation: "teacher" },
-  { name: "Prof. Prism", price: 81, occupation: "teacher" },
-  { name: "Dr. Impulse", price: 43, occupation: "teacher" },
-  { name: "Prof. Spark", price: 76, occupation: "programmer" },
-  { name: "Dr. Wire", price: 47, occupation: "teacher" },
-  { name: "Prof. Goose", price: 72, occupation: "driver" },
-]
+// // script.js
+// const possibleNames = [
+//   "Dr. Slice",
+//   "Dr. Pressure",
+//   "Prof. Possibility",
+//   "Prof. Prism",
+//   "Dr. Impulse",
+//   "Prof. Spark",
+//   "Dr. Wire",
+//   "Prof. Goose",
+// ]
+// const possibleOccupations = ["gardener", "programmer", "teacher", "driver"]
+// const minPrice = 25
+// const maxPrice = 100
 
-const delay = 1000
+// const getRandomElement = array => {
+//   return array[Math.floor(Math.random() * array.length)]
+// }
 
-const h1Avg = document.querySelector(".forum-avg-price")
+// const generateRandomFreelancer = () => {
+//   const name = getRandomElement(possibleNames)
+//   const occupation = getRandomElement(possibleOccupations)
+//   const price = Math.floor(Math.random() * (maxPrice - minPrice + 1)) + minPrice
+//   return { name, occupation, price }
+// }
 
-const addFreelancersWithDelay = (arr, delay) => {
-  const freelancersUl = document.querySelector("#freelancers-ul")
-  let total = 0
+// const freelancers = [generateRandomFreelancer(), generateRandomFreelancer()]
 
-  const intervalId = setInterval(() => {
-    if (arr.length === 0) {
-      clearInterval(intervalId)
-      return
-    }
+// const h1Avg = document.querySelector(".forum-avg-price")
 
-    const freelancer = arr.shift()
-    const element = document.createElement("li")
-    element.textContent = `${freelancer.name} - ${freelancer.occupation} - $${freelancer.price}`
-    freelancersUl.appendChild(element)
+// const renderFreelancers = () => {
+//   const freelancersUl = document.querySelector("#freelancers-ul")
+//   freelancersUl.innerHTML = ""
 
-    total += freelancer.price
-    const avgPrice = total / freelancersUl.children.length
-    h1Avg.textContent = `Average Price: $${avgPrice.toFixed(2)}`
-  }, delay)
-}
+//   let total = 0
+//   freelancers.forEach(freelancer => {
+//     const element = document.createElement("li")
+//     element.textContent = `${freelancer.name} - ${freelancer.occupation} - $${freelancer.price}`
+//     freelancersUl.appendChild(element)
+//     total += freelancer.price
+//   })
 
-addFreelancersWithDelay(freelancers, delay)
+//   const avgPrice = total / freelancers.length
+//   h1Avg.textContent = `Average Price: $${avgPrice.toFixed(2)}`
+// }
+
+// const addRandomFreelancer = () => {
+//   const newFreelancer = generateRandomFreelancer()
+//   freelancers.push(newFreelancer)
+//   renderFreelancers()
+// }
+
+// const intervalId = setInterval(addRandomFreelancer, 3000)
