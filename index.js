@@ -9,11 +9,29 @@ const freelancers = [
   { name: "Prof. Goose", price: 72, occupation: "driver" },
 ]
 
-// const addFreelancerId = setInterval(addFreelancer, 1000)
-const freelancersUl = document.querySelector("#freelancers-ul")
-const freelancerElements = freelancers.map(freelancer => {
-  const element = document.createElement("li")
-  element.textContent = `${freelancer.name} - ${freelancer.occupation} - $${freelancer.price}`
-  freelancersUl.appendChild(element)
-  return element
-})
+const delay = 1000
+
+const h1Avg = document.querySelector(".forum-avg-price")
+
+const addFreelancersWithDelay = (arr, delay) => {
+  const freelancersUl = document.querySelector("#freelancers-ul")
+  let total = 0
+
+  const intervalId = setInterval(() => {
+    if (arr.length === 0) {
+      clearInterval(intervalId)
+      return
+    }
+
+    const freelancer = arr.shift()
+    const element = document.createElement("li")
+    element.textContent = `${freelancer.name} - ${freelancer.occupation} - $${freelancer.price}`
+    freelancersUl.appendChild(element)
+
+    total += freelancer.price
+    const avgPrice = total / freelancersUl.children.length
+    h1Avg.textContent = `Average Price: $${avgPrice.toFixed(2)}`
+  }, delay)
+}
+
+addFreelancersWithDelay(freelancers, delay)
